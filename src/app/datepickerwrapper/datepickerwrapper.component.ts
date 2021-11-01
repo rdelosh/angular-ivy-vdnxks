@@ -53,7 +53,6 @@ export class DatepickerwrapperComponent
   @ViewChild(MatInput, { static: true }) myinput;
   @Input() labelName: string;
   constructor(private ngControl: NgControl
-    ,private adapter: CustomDateAdapter
     ,private dateTimeService: DateTimeService
     ) {
     super();
@@ -65,7 +64,7 @@ export class DatepickerwrapperComponent
       console.log(status);
       this.setInvalidStatus();
     });
-    this.adapter.formatSub.subscribe((x) => {
+    this.dateTimeService._formatSubscription.subscribe((x) => {
       this.refreshMe();
     });
   }
@@ -76,5 +75,6 @@ export class DatepickerwrapperComponent
     this.dateTimeService.format = 'L';
     //this.adapter.format(new Date(),'LL')
   }
+
 }
 
