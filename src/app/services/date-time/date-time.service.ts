@@ -22,7 +22,7 @@ export class DateTimeService
   }
   public set format(value: string)
   {
-    console.log(`Setting format to '${ value }'`);
+    // console.log(`Setting format to '${ value }'`);
 
     this._format = value;
     this._formatSubject.next(this._format);
@@ -34,8 +34,9 @@ export class DateTimeService
   }  
   public set locale(value: string)
   {
-    console.log(`Setting locale to '${ value }'`);
+    // console.log(`Setting locale to '${ value }'`);
 
     this._locale = value;
+    
   }
 }

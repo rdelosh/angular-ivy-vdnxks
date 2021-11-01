@@ -23,7 +23,7 @@ export class CustomDateAdapter extends MomentDateAdapter
 
     const result = date.locale(locale).format(format);
 
-    console.log(`Reading date [local: '${ locale }'; format: '${ format }'; result: '${ result }']`);
+    // console.log(`Reading date [local: '${ locale }'; format: '${ format }'; result: '${ result }']`);
 
     return result;
   }
