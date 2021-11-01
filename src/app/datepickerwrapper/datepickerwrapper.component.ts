@@ -20,6 +20,8 @@ import { DatepickerwrapperTemplate } from './datepickerwrapper.template.componen
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl, MatInput } from '@angular/material';
 import { Observable, Subject } from 'rxjs';
+import { CustomDateAdapter } from '../services/date-time/customDateAdapter';
+import { DateTimeService } from '../services/date-time/date-time.service';
 
 export class CustomErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
@@ -50,7 +52,10 @@ export class DatepickerwrapperComponent
 {
   @ViewChild(MatInput, { static: true }) myinput;
   @Input() labelName: string;
-  constructor(private ngControl: NgControl) {
+  constructor(private ngControl: NgControl
+    ,private adapter: CustomDateAdapter
+    ,private dateTimeService: DateTimeService
+    ) {
     super();
     this.ngControl.valueAccessor = this;
   }
@@ -60,5 +65,16 @@ export class DatepickerwrapperComponent
       console.log(status);
       this.setInvalidStatus();
     });
+    this.adapter.formatSub.subscribe((x) => {
+      this.refreshMe();
+    });
+  }
+  refreshMe() {
+    this.value = this.value ? new Date(this.value) : null;
+  }
+  dosomething(){
+    this.dateTimeService.format = 'L';
+    //this.adapter.format(new Date(),'LL')
   }
 }
+

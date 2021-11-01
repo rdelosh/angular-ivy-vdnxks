@@ -10,8 +10,10 @@ import {
   MatFormFieldModule,
   MatDatepickerModule,
   MatNativeDateModule,
+DateAdapter,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomDateAdapter } from './services/date-time/customDateAdapter';
 
 @NgModule({
   imports: [
@@ -26,6 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   declarations: [AppComponent, HelloComponent, DatepickerwrapperComponent],
   bootstrap: [AppComponent],
+  providers:
+  [
+    CustomDateAdapter, // so we could inject services to 'CustomDateAdapter'
+    { provide: DateAdapter, useClass: CustomDateAdapter }, // Parse MatDatePicker Format
+  ],
 })
 export class AppModule {}
 
