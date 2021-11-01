@@ -1,0 +1,22 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+<div [formGroup]="fg">
+  <input type="text" formControlName="name" />
+
+  
+  <datepickerwrapper labelName="Start Date" formControlName="startDate"></datepickerwrapper>  
+</div>
+
+<datepickerwrapper [(ngModel)]="newDate"></datepickerwrapper>  
+
+<pre>{{newDate}}</pre> 
+<pre>{{ fg.controls.name.value }}</pre> 
+<pre>value:{{ fg.controls.startDate.value|json }}</pre>
+
+ <pre>touched:{{ fg.controls.startDate.touched }}</pre>
+ <pre>dirty:{{ fg.controls.startDate.dirty }}</pre>
+ <pre>hasError:{{ fg.controls.startDate.errors|json }}</pre>
+ <pre>invalid:{{ fg.controls.startDate.invalid|json }}</pre>
+
+
+<button (click)="changeValue()">nullout</button>

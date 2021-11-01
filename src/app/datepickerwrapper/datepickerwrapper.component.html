@@ -1,0 +1,17 @@
+<mat-form-field appearance="fill">
+  <mat-label *ngIf="labelName">{{labelName}}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="DatePickerPanel"
+    [value]="value"
+    (dateChange)="hasChanged($event.value)"
+    [disabled]="disabled"
+    (blur)="blurEvent()"
+    
+  />
+  <mat-datepicker-toggle matSuffix [for]="DatePickerPanel">
+  </mat-datepicker-toggle>
+  <mat-datepicker #DatePickerPanel></mat-datepicker>
+</mat-form-field>
+
+<button (click)="dosomething()">click me</button>
